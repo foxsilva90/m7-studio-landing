@@ -1,40 +1,49 @@
 ---
+import SectionHead from "./SectionHead.astro";
 import { plans, whatsappUrl } from "../data/site";
 ---
 
-<section class="band alt" id="planos">
-  <div class="wrap">
-    <p class="eyebrow">Planos</p>
-    <h2>Escolha como quer usar o estúdio</h2>
-    <p class="intro">
-      Cada formato tem um valor. Fale com a gente pelo WhatsApp e a gente monta
-      um orçamento sob medida para o seu programa.
-    </p>
-    <div class="plans">
-      {
-        plans.map((p) => (
-          <div class={p.feature ? "plan feature" : "plan"}>
-            <div class="pname">{p.name}</div>
-            <div class="price">
-              {p.price}
-              <small> {p.unit}</small>
-            </div>
-            <ul>
-              {p.items.map((it) => (
-                <li>{it}</li>
-              ))}
-            </ul>
-            <a
-              class={p.feature ? "btn btn-gold" : "btn btn-ghost"}
-              href={whatsappUrl(`Olá! Tenho interesse no plano "${p.name}" do M7 Studio.`)}
-              target="_blank"
-              rel="noopener"
-            >
-              {p.cta}
-            </a>
-          </div>
-        ))
-      }
+<section class="section" id="planos">
+  <div class="shell">
+    <div class="section__grid">
+      <SectionHead
+        index="04"
+        kicker="Planos"
+        title="Escolha como quer usar o estúdio"
+      >
+        <p class="section__lead">
+          Cada formato tem um valor. Fale com a gente pelo WhatsApp e montamos um
+          orçamento sob medida para o seu programa.
+        </p>
+        <ul class="plans">
+          {
+            plans.map((p) => (
+              <li>
+                <div class={p.feature ? "pn is-feature" : "pn"}>{p.name}</div>
+                <ul class="pl">
+                  {p.items.map((it) => (
+                    <li>{it}</li>
+                  ))}
+                </ul>
+                <div class="pp">
+                  <div class="pv">{p.price}</div>
+                  <div class="pu">{p.unit}</div>
+                  <a
+                    class="link"
+                    href={whatsappUrl(
+                      `Olá! Tenho interesse no plano "${p.name}" do M7 Studio.`,
+                    )}
+                    target="_blank"
+                    rel="noopener"
+                  >
+                    {p.cta}
+                  </a>
+                </div>
+              </li>
+            ))
+          }
+        </ul>
+      </SectionHead>
     </div>
   </div>
 </section>

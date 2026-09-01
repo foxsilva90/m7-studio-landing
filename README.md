@@ -13,23 +13,33 @@ npm run build    # gera dist/
 npm run preview  # serve o build
 ```
 
+## Design
+
+Sistema editorial: fundo papel quente (light-first), títulos em serifa
+**Fraunces**, corpo em **Hanken Grotesk**, rótulos em **IBM Plex Mono**.
+Grade assimétrica com numerais de seção. Momentos escuros (`.section--noir`)
+para a abertura e o CTA final. Paleta: carvão / prata / dourado.
+
+O vídeo da logo (marca d'água do Veo removida com `delogo`) toca uma vez como
+abertura no primeiro acesso da sessão. Pulado em `prefers-reduced-motion`.
+
 ## Estrutura
 
 ```
 src/
-  data/site.ts        fonte única: contato, endereço, planos, FAQ, stats
-  layouts/Base.astro  <head>, SEO, Open Graph, JSON-LD (LocalBusiness)
-  components/          Nav, Hero, Studio, Structure, HowItWorks, Plans, Faq, FinalCta, Footer
-  styles/global.css    design system (tokens claro/escuro, componentes)
-  pages/index.astro    monta a página + script do hero (reveal, VU meter, waveform)
+  data/site.ts         fonte única: contato, endereço, planos, FAQ, stats
+  layouts/Base.astro    <head>, SEO, Open Graph, JSON-LD (LocalBusiness)
+  components/
+    Intro.astro         splash de abertura (vídeo da logo)
+    SectionHead.astro   numeral + kicker + título (reutilizado nas seções)
+    Nav, Hero, Studio, Structure, HowItWorks, Plans, Faq, FinalCta, Footer
+  styles/global.css     design system (tokens claro/escuro, componentes)
+  pages/index.astro     monta a página + script (abertura + reveal ao rolar)
 public/
-  logo-m7.mp4          vídeo da logo (fundo do hero)
-  og.jpg               imagem de compartilhamento (1200x630)
+  logo-m7.mp4           vídeo da logo, sem marca d'água
+  og.jpg                imagem de compartilhamento (1200x630)
   favicon.svg
   robots.txt
-legacy/
-  index.html           versão anterior de arquivo único (referência)
-m7-studio-landing.html  fonte usada no editor de Artifact do Claude
 ```
 
 ## Editar conteúdo

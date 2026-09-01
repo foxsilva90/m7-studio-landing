@@ -4,12 +4,12 @@ import { site, whatsappUrl } from "../data/site";
 const year = new Date().getFullYear();
 ---
 
-<footer class="ft">
-  <div class="wrap">
-    <div class="ft-grid">
+<footer class="foot">
+  <div class="shell">
+    <div class="foot__grid">
       <div>
         <Brand />
-        <p style="max-width:38ch">
+        <p style="margin-top:16px">
           Estúdio de podcast para alugar. Estrutura completa de áudio e vídeo
           para você produzir o seu próprio conteúdo.
         </p>
@@ -17,7 +17,7 @@ const year = new Date().getFullYear();
       <div>
         <h4>Contato</h4>
         <a href={whatsappUrl()} target="_blank" rel="noopener">
-          WhatsApp: {site.whatsappDisplay}
+          WhatsApp {site.whatsappDisplay}
         </a>
       </div>
       <div>
@@ -28,7 +28,7 @@ const year = new Date().getFullYear();
         </p>
       </div>
     </div>
-    <div class="colophon">
+    <div class="foot__end">
       <span>&copy; {year} {site.name}</span>
       <span>Todos os direitos reservados</span>
     </div>

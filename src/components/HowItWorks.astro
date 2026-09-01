@@ -1,23 +1,30 @@
 ---
+import SectionHead from "./SectionHead.astro";
 import { steps } from "../data/site";
 ---
 
-<section class="band" id="como">
-  <div class="wrap">
-    <p class="eyebrow">Como Funciona</p>
-    <h2>Da reserva ao episódio pronto em quatro passos</h2>
-    <div class="steps">
-      {
-        steps.map((s) => (
-          <div class="step">
-            <div class="tc">{s.tc}</div>
-            <div>
-              <h3>{s.title}</h3>
-              <p>{s.body}</p>
-            </div>
-          </div>
-        ))
-      }
+<section class="section" id="como">
+  <div class="shell">
+    <div class="section__grid">
+      <SectionHead
+        index="03"
+        kicker="Como funciona"
+        title="Da reserva ao episódio pronto em quatro passos"
+      >
+        <ol class="steps">
+          {
+            steps.map((s) => (
+              <li>
+                <div class="st">{s.tc}</div>
+                <div>
+                  <h3>{s.title}</h3>
+                  <p>{s.body}</p>
+                </div>
+              </li>
+            ))
+          }
+        </ol>
+      </SectionHead>
     </div>
   </div>
 </section>

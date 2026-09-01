@@ -1,21 +1,31 @@
 ---
+import SectionHead from "./SectionHead.astro";
 import { structure } from "../data/site";
 ---
 
-<section class="band alt" id="estrutura">
-  <div class="wrap">
-    <p class="eyebrow">Estrutura</p>
-    <h2>Tudo o que já está na sala esperando você</h2>
-    <div class="grid3">
-      {
-        structure.map((c) => (
-          <div class="card">
-            <span class="tag">{c.tag}</span>
-            <h3>{c.title}</h3>
-            <p>{c.body}</p>
-          </div>
-        ))
-      }
+<section class="section" id="estrutura">
+  <div class="shell">
+    <div class="section__grid">
+      <SectionHead
+        index="02"
+        kicker="Estrutura"
+        title="Tudo o que já está na sala esperando você"
+      >
+        <ol class="rows">
+          {
+            structure.map((c, i) => (
+              <li>
+                <div class="rc">{String(i + 1).padStart(2, "0")}</div>
+                <div>
+                  <div class="rt">{c.tag}</div>
+                  <h3>{c.title}</h3>
+                  <p>{c.body}</p>
+                </div>
+              </li>
+            ))
+          }
+        </ol>
+      </SectionHead>
     </div>
   </div>
 </section>
