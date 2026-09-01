@@ -1,0 +1,20 @@
+---
+import { faq } from "../data/site";
+---
+
+<section class="band" id="faq">
+  <div class="wrap">
+    <p class="eyebrow">Dúvidas Frequentes</p>
+    <h2>O que costumam perguntar</h2>
+    <div class="faq">
+      {
+        faq.map((f) => (
+          <details>
+            <summary>{f.q}</summary>
+            <p>{f.a}</p>
+          </details>
+        ))
+      }
+    </div>
+  </div>
+</section>

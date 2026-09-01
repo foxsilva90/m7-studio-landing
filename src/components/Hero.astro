@@ -1,0 +1,40 @@
+---
+import { whatsappUrl } from "../data/site";
+---
+
+<section class="hero">
+  <video
+    class="hero-video"
+    src="/logo-m7.mp4"
+    autoplay
+    muted
+    loop
+    playsinline
+    preload="none"
+    poster="/og.jpg"
+    aria-hidden="true"></video>
+  <div class="wrap hero-inner">
+    <p class="eyebrow">Estúdio de podcast para alugar</p>
+    <h1>Seu podcast, gravado como <span class="accent">estúdio de verdade</span>.</h1>
+    <p class="lead">
+      Você traz a pauta e os convidados. O M7 Studio entrega o espaço, as câmeras,
+      os microfones e a acústica tratada — tudo pronto para você apertar o REC e
+      sair com o episódio na mão.
+    </p>
+    <div class="hero-actions">
+      <a
+        class="btn btn-gold"
+        href={whatsappUrl("Olá! Quero agendar uma sessão no M7 Studio.")}
+        target="_blank"
+        rel="noopener">Agendar no WhatsApp</a
+      >
+      <a class="btn btn-ghost" href="#planos">Ver planos e valores</a>
+    </div>
+    <div class="hero-meta">
+      <span>Reserva por sessão</span>
+      <span>Equipamento incluso</span>
+      <span>Arquivos no mesmo dia</span>
+    </div>
+  </div>
+  <canvas id="wave" aria-hidden="true"></canvas>
+</section>

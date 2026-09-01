@@ -1,0 +1,27 @@
+---
+import { stats } from "../data/site";
+---
+
+<section class="band" id="estudio">
+  <div class="wrap">
+    <p class="eyebrow">O Estúdio</p>
+    <h2>Um espaço feito só para gravar conteúdo em áudio e vídeo</h2>
+    <p class="intro">
+      O M7 Studio nasceu para quem quer produzir o próprio podcast sem montar um
+      estúdio em casa. Chegue, sente na bancada e grave: o ambiente já está
+      climatizado, iluminado e com tratamento acústico para o seu áudio sair
+      limpo e o vídeo com cara de canal profissional.
+    </p>
+    <div class="vu" aria-hidden="true"></div>
+    <div class="stats">
+      {
+        stats.map((s) => (
+          <div>
+            <div class="num">{s.num}</div>
+            <div class="lbl">{s.label}</div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

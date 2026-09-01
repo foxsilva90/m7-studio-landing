@@ -1,0 +1,39 @@
+---
+import { plans, whatsappUrl } from "../data/site";
+---
+
+<section class="band alt" id="planos">
+  <div class="wrap">
+    <p class="eyebrow">Planos</p>
+    <h2>Escolha como quer usar o estúdio</h2>
+    <p class="intro">
+      Valores abaixo são exemplos — ajuste com os preços reais do M7 Studio.
+    </p>
+    <div class="plans">
+      {
+        plans.map((p) => (
+          <div class={p.feature ? "plan feature" : "plan"}>
+            <div class="pname">{p.name}</div>
+            <div class="price">
+              {p.price}
+              <small> {p.unit}</small>
+            </div>
+            <ul>
+              {p.items.map((it) => (
+                <li>{it}</li>
+              ))}
+            </ul>
+            <a
+              class={p.feature ? "btn btn-gold" : "btn btn-ghost"}
+              href={whatsappUrl(`Olá! Tenho interesse no plano "${p.name}" do M7 Studio.`)}
+              target="_blank"
+              rel="noopener"
+            >
+              {p.cta}
+            </a>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

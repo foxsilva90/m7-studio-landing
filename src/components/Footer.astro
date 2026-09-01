@@ -1,0 +1,42 @@
+---
+import Brand from "./Brand.astro";
+import { site, whatsappUrl } from "../data/site";
+const year = new Date().getFullYear();
+---
+
+<footer class="ft">
+  <div class="wrap">
+    <div class="ft-grid">
+      <div>
+        <Brand />
+        <p style="max-width:38ch">
+          Estúdio de podcast para alugar. Estrutura completa de áudio e vídeo
+          para você produzir o seu próprio conteúdo.
+        </p>
+      </div>
+      <div>
+        <h4>Contato</h4>
+        <a href={whatsappUrl()} target="_blank" rel="noopener">
+          WhatsApp: {site.whatsappDisplay}
+        </a>
+        <a href={`mailto:${site.email}`}>{site.email}</a>
+        <a
+          href={`https://instagram.com/${site.instagram}`}
+          target="_blank"
+          rel="noopener">@{site.instagram}</a
+        >
+      </div>
+      <div>
+        <h4>Endereço</h4>
+        <p>
+          {site.address.line1}<br />
+          {site.address.line2}
+        </p>
+      </div>
+    </div>
+    <div class="colophon">
+      <span>&copy; {year} {site.name}</span>
+      <span>Todos os direitos reservados</span>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,105 @@
+---
+import Base from "../layouts/Base.astro";
+import Nav from "../components/Nav.astro";
+import Hero from "../components/Hero.astro";
+import Studio from "../components/Studio.astro";
+import Structure from "../components/Structure.astro";
+import HowItWorks from "../components/HowItWorks.astro";
+import Plans from "../components/Plans.astro";
+import Faq from "../components/Faq.astro";
+import FinalCta from "../components/FinalCta.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<Base>
+  <Nav />
+  <main id="top">
+    <Hero />
+    <Studio />
+    <Structure />
+    <HowItWorks />
+    <Plans />
+    <Faq />
+    <FinalCta />
+  </main>
+  <Footer />
+</Base>
+
+<script>
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  // scroll reveal
+  const revEls = document.querySelectorAll<HTMLElement>(
+    ".band .wrap > *, .final .wrap > *",
+  );
+  revEls.forEach((el) => el.classList.add("reveal"));
+  if ("IntersectionObserver" in window && !reduce) {
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            e.target.classList.add("in");
+            io.unobserve(e.target);
+          }
+        });
+      },
+      { threshold: 0.12 },
+    );
+    revEls.forEach((el) => io.observe(el));
+  } else {
+    revEls.forEach((el) => el.classList.add("in"));
+  }
+
+  // VU meter bars
+  document.querySelectorAll(".vu").forEach((vu) => {
+    for (let i = 0; i < 28; i++) {
+      const b = document.createElement("i");
+      b.style.animationDelay = (-(Math.random() * 1.4)).toFixed(2) + "s";
+      b.style.animationDuration = (1 + Math.random() * 0.9).toFixed(2) + "s";
+      vu.appendChild(b);
+    }
+  });
+
+  // hero waveform canvas
+  const c = document.getElementById("wave") as HTMLCanvasElement | null;
+  if (c) {
+    const ctx = c.getContext("2d")!;
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    let W = 0;
+    let H = 0;
+    const size = () => {
+      W = c.clientWidth;
+      H = c.clientHeight;
+      c.width = W * dpr;
+      c.height = H * dpr;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    };
+    size();
+    window.addEventListener("resize", size);
+    const gold = () =>
+      getComputedStyle(document.documentElement)
+        .getPropertyValue("--gold")
+        .trim() || "#E0B04B";
+    let t = 0;
+    const draw = () => {
+      ctx.clearRect(0, 0, W, H);
+      const g = gold();
+      const bars = Math.floor(W / 9);
+      for (let i = 0; i < bars; i++) {
+        const x = i * 9 + 3;
+        const n =
+          Math.sin(i * 0.35 + t) * 0.5 + Math.sin(i * 0.11 - t * 1.7) * 0.5;
+        const h = (0.18 + Math.abs(n) * 0.8) * H;
+        ctx.fillStyle = g;
+        ctx.globalAlpha = 0.25 + Math.abs(n) * 0.5;
+        ctx.fillRect(x, H - h, 4, h);
+      }
+      ctx.globalAlpha = 1;
+      if (!reduce) {
+        t += 0.03;
+        requestAnimationFrame(draw);
+      }
+    };
+    draw();
+  }
+</script>

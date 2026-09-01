@@ -1,0 +1,12 @@
+---
+import { site } from "../data/site";
+interface Props {
+  href?: string;
+}
+const { href = "#top" } = Astro.props;
+---
+
+<a class="brand" href={href}>
+  <span class="m">M</span><span class="seven">7</span>
+  <small>Studio Produções</small>
+</a>

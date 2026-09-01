@@ -1,0 +1,21 @@
+---
+import { structure } from "../data/site";
+---
+
+<section class="band alt" id="estrutura">
+  <div class="wrap">
+    <p class="eyebrow">Estrutura</p>
+    <h2>Tudo o que já está na sala esperando você</h2>
+    <div class="grid3">
+      {
+        structure.map((c) => (
+          <div class="card">
+            <span class="tag">{c.tag}</span>
+            <h3>{c.title}</h3>
+            <p>{c.body}</p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

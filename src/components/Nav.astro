@@ -1,0 +1,23 @@
+---
+import Brand from "./Brand.astro";
+import { whatsappUrl } from "../data/site";
+---
+
+<header class="nav">
+  <div class="wrap nav-inner">
+    <Brand />
+    <nav class="nav-links">
+      <a href="#estudio">O Estúdio</a>
+      <a href="#estrutura">Estrutura</a>
+      <a href="#como">Como Funciona</a>
+      <a href="#planos">Planos</a>
+      <a href="#contato">Contato</a>
+      <a
+        class="btn btn-gold"
+        href={whatsappUrl("Olá! Quero agendar uma sessão no M7 Studio.")}
+        target="_blank"
+        rel="noopener">Agendar</a
+      >
+    </nav>
+  </div>
+</header>
