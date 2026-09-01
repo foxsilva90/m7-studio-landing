@@ -1,6 +1,5 @@
 ---
 import Base from "../layouts/Base.astro";
-import Intro from "../components/Intro.astro";
 import Nav from "../components/Nav.astro";
 import Hero from "../components/Hero.astro";
 import Studio from "../components/Studio.astro";
@@ -13,7 +12,6 @@ import Footer from "../components/Footer.astro";
 ---
 
 <Base>
-  <Intro />
   <Nav />
   <main>
     <Hero />
@@ -31,38 +29,9 @@ import Footer from "../components/Footer.astro";
   const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   document.documentElement.classList.add("js");
 
-  // ---- abertura ----
-  const intro = document.getElementById("intro");
-  if (intro) {
-    let seen = false;
-    try {
-      seen = sessionStorage.getItem("m7_intro_seen") === "1";
-    } catch {}
-    const video = intro.querySelector("video") as HTMLVideoElement | null;
-
-    if (reduce || seen || !video) {
-      intro.remove();
-    } else {
-      intro.hidden = false;
-      document.body.classList.add("intro-lock");
-      const done = () => {
-        try {
-          sessionStorage.setItem("m7_intro_seen", "1");
-        } catch {}
-        intro.classList.add("is-done");
-        document.body.classList.remove("intro-lock");
-        setTimeout(() => intro.remove(), 800);
-      };
-      intro.querySelector(".skip")?.addEventListener("click", done);
-      video.addEventListener("ended", done);
-      video.play().catch(done);
-      setTimeout(done, 6000); // trava de segurança
-    }
-  }
-
-  // ---- reveal ao rolar ----
+  // reveal ao rolar
   const revEls = document.querySelectorAll<HTMLElement>(
-    ".section__grid > *, .hero > *",
+    ".section__grid > *, .hero__inner > *",
   );
   const revealAll = () => revEls.forEach((el) => el.classList.add("in"));
   revEls.forEach((el) => el.classList.add("reveal"));

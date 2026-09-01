@@ -2,28 +2,41 @@
 import { whatsappUrl } from "../data/site";
 ---
 
-<section class="hero shell" id="top">
-  <p class="hero__kicker">Estúdio de podcast · Rio de Janeiro</p>
-  <h1 class="hero__title">
-    Um estúdio pronto para o seu <em>podcast</em>.
-  </h1>
-  <p class="hero__lead">
-    Você traz a pauta e os convidados. A gente entrega o espaço, as câmeras, os
-    microfones e a acústica tratada — é chegar, gravar e sair com o episódio na
-    mão.
-  </p>
-  <div class="hero__actions">
-    <a
-      class="btn"
-      href={whatsappUrl("Olá! Quero agendar uma sessão no M7 Studio.")}
-      target="_blank"
-      rel="noopener">Agendar no WhatsApp</a
-    >
-    <a class="link" href="#planos">Ver planos</a>
-  </div>
-  <div class="hero__facts">
-    <span>Reserva por sessão</span>
-    <span>Equipamento incluso</span>
-    <span>Arquivos no mesmo dia</span>
+<section class="hero" id="top">
+  <video
+    class="hero__bg"
+    src="/logo-m7.mp4"
+    autoplay
+    muted
+    loop
+    playsinline
+    preload="auto"
+    poster="/og.jpg"
+    aria-hidden="true"></video>
+  <div class="hero__scrim"></div>
+  <div class="shell hero__inner">
+    <p class="hero__kicker">Estúdio de podcast · Rio de Janeiro</p>
+    <h1 class="hero__title">
+      Um estúdio pronto para o seu <em>podcast</em>.
+    </h1>
+    <p class="hero__lead">
+      Você traz a pauta e os convidados. A gente entrega o espaço, as câmeras, os
+      microfones e a acústica tratada — é chegar, gravar e sair com o episódio na
+      mão.
+    </p>
+    <div class="hero__actions">
+      <a
+        class="btn"
+        href={whatsappUrl("Olá! Quero agendar uma sessão no M7 Studio.")}
+        target="_blank"
+        rel="noopener">Agendar no WhatsApp</a
+      >
+      <a class="link" href="#planos">Ver planos</a>
+    </div>
+    <div class="hero__facts">
+      <span>Reserva por sessão</span>
+      <span>Equipamento incluso</span>
+      <span>Arquivos no mesmo dia</span>
+    </div>
   </div>
 </section>
