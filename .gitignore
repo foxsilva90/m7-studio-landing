@@ -5,6 +5,7 @@ dist/
 
 # vercel
 .vercel
+.env*
 
 # sistema
 .DS_Store
