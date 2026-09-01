@@ -6,8 +6,6 @@ export const site = {
     "Estúdio de podcast para alugar no Rio de Janeiro. Câmeras 4K, microfones profissionais e acústica tratada — você chega, grava e sai com o episódio pronto.",
   whatsappNumber: "5521990907668",
   whatsappDisplay: "(21) 99090-7668",
-  email: "contato@m7studio.com.br",
-  instagram: "m7studio",
   address: {
     line1: "Rua Araguaia, 1500, Sala 303",
     line2: "Freguesia — Rio de Janeiro / RJ",

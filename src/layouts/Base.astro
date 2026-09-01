@@ -23,7 +23,6 @@ const jsonLd = {
   image: ogImage,
   url: canonical,
   telephone: `+${site.whatsappNumber}`,
-  email: site.email,
   address: {
     "@type": "PostalAddress",
     streetAddress: site.address.line1,
@@ -31,7 +30,6 @@ const jsonLd = {
     addressRegion: "RJ",
     addressCountry: "BR",
   },
-  sameAs: [`https://instagram.com/${site.instagram}`],
 };
 ---
 

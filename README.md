@@ -40,8 +40,10 @@ Instagram, endereço, os 3 planos e a FAQ. Trocar lá reflete em toda a página.
 ### Ainda com placeholder
 
 - Preços dos planos (`R$ 000`) em `src/data/site.ts`
-- E-mail `contato@m7studio.com.br` e Instagram `@m7studio`
 - `site` em `astro.config.mjs` aponta para o domínio provisório da Vercel
+
+Quando tiver e-mail e Instagram, adicionar de volta em `src/data/site.ts`,
+`src/components/Footer.astro` e no JSON-LD de `src/layouts/Base.astro`.
 
 ## Deploy
 
