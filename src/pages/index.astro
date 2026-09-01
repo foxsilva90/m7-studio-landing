@@ -28,11 +28,14 @@ import Footer from "../components/Footer.astro";
 <script>
   const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  // scroll reveal
+  // scroll reveal — o gate .js garante que sem JS o conteúdo aparece normal
+  document.documentElement.classList.add("js");
   const revEls = document.querySelectorAll<HTMLElement>(
     ".band .wrap > *, .final .wrap > *",
   );
+  const revealAll = () => revEls.forEach((el) => el.classList.add("in"));
   revEls.forEach((el) => el.classList.add("reveal"));
+
   if ("IntersectionObserver" in window && !reduce) {
     const io = new IntersectionObserver(
       (entries) => {
@@ -43,11 +46,13 @@ import Footer from "../components/Footer.astro";
           }
         });
       },
-      { threshold: 0.12 },
+      { threshold: 0.12, rootMargin: "0px 0px -8% 0px" },
     );
     revEls.forEach((el) => io.observe(el));
+    // rede de segurança: revela tudo se algo travar o observer
+    setTimeout(revealAll, 2500);
   } else {
-    revEls.forEach((el) => el.classList.add("in"));
+    revealAll();
   }
 
   // VU meter bars
