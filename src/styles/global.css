@@ -327,6 +327,9 @@ canvas#wave {
   padding: 90px 0;
   border-bottom: 1px solid var(--border);
 }
+section[id] {
+  scroll-margin-top: 84px;
+}
 .band.alt {
   background: var(--bg-2);
 }
@@ -539,18 +542,21 @@ canvas#wave {
 }
 .plan .price {
   font-family: "Oswald", sans-serif;
-  font-size: 2.7rem;
+  font-size: 2rem;
   font-weight: 700;
   color: var(--gold);
-  line-height: 1;
-  font-variant-numeric: tabular-nums;
+  line-height: 1.1;
+  text-transform: uppercase;
 }
 .plan .price small {
+  display: block;
+  margin-top: 6px;
   font-family: "IBM Plex Mono", monospace;
-  font-size: 0.8rem;
+  font-size: 0.72rem;
   color: var(--text-dim);
   font-weight: 400;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
 }
 .plan ul {
   list-style: none;

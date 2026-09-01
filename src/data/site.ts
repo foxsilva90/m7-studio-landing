@@ -83,10 +83,10 @@ export const steps = [
 export const plans = [
   {
     name: "Sessão Avulsa",
-    price: "R$ 000",
-    unit: "/ sessão",
+    price: "Sob consulta",
+    unit: "por sessão",
     feature: false,
-    cta: "Reservar sessão",
+    cta: "Pedir valor",
     items: [
       "Até 2 episódios em 01h30",
       "Estúdio completo com equipe de apoio",
@@ -96,10 +96,10 @@ export const plans = [
   },
   {
     name: "Pacote Gravação",
-    price: "R$ 000",
-    unit: "/ 4 sessões",
+    price: "Sob consulta",
+    unit: "4 sessões",
     feature: true,
-    cta: "Reservar pacote",
+    cta: "Pedir orçamento",
     items: [
       "Quatro sessões com desconto",
       "Grave um mês de programa de uma vez",
@@ -109,8 +109,8 @@ export const plans = [
   },
   {
     name: "Plano Mensal",
-    price: "R$ 000",
-    unit: "/ mês",
+    price: "Sob consulta",
+    unit: "mensal",
     feature: false,
     cta: "Falar sobre o mensal",
     items: [
