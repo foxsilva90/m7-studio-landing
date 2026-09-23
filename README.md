@@ -50,7 +50,7 @@ Instagram, endereço, os 3 planos e a FAQ. Trocar lá reflete em toda a página.
 ### Ainda com placeholder
 
 - Preços dos planos (`R$ 000`) em `src/data/site.ts`
-- `site` em `astro.config.mjs` aponta para o domínio provisório da Vercel
+- Domínio: https://m7estudio.com (DNS na Hostinger, A @ → 76.76.21.21)
 
 Quando tiver e-mail e Instagram, adicionar de volta em `src/data/site.ts`,
 `src/components/Footer.astro` e no JSON-LD de `src/layouts/Base.astro`.
