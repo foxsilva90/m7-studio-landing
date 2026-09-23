@@ -5,6 +5,9 @@ interface Props {
 const { href = "#top" } = Astro.props;
 ---
 
-<a class="wordmark" href={href} aria-label="M7 Studio Produções">
-  <b>M</b><i>7</i><span>Studio Produções</span>
+<a class="brand" href={href}>
+  <picture>
+    <source srcset="/logo-m7.webp" type="image/webp" />
+    <img src="/logo-m7.png" alt="M7 Studio Produções" width="297" height="208" />
+  </picture>
 </a>

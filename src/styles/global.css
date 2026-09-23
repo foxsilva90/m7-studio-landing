@@ -255,22 +255,22 @@ a:focus-visible {
 }
 
 /* ---------- nav ---------- */
+/* nav sempre escura: o logo metálico só brilha sobre fundo escuro */
 .nav {
-  position: sticky;
-  top: 0;
-  z-index: 40;
-  background: color-mix(in srgb, var(--paper) 90%, transparent);
-  backdrop-filter: blur(8px);
-  border-bottom: 1px solid var(--rule);
-  transition: background 0.4s ease, border-color 0.4s ease;
-}
-/* sobre o palco escuro: transparente, texto claro */
-.nav.is-stage {
   --paper: #0c0b0a;
   --ink: #ece7db;
   --ink-soft: #b3ad9d;
-  --steel: #c7c9ce;
   --gold: #e3b24c;
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  background: rgba(12, 11, 10, 0.88);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(236, 231, 219, 0.08);
+  transition: background 0.4s ease, border-color 0.4s ease;
+}
+/* sobre o hero: transparente */
+.nav.is-stage {
   background: transparent;
   backdrop-filter: none;
   border-bottom-color: transparent;
@@ -310,33 +310,19 @@ a:focus-visible {
   }
 }
 
-/* wordmark */
-.wordmark {
-  font-family: var(--serif);
-  font-weight: 500;
-  font-optical-sizing: auto;
-  font-size: 1.6rem;
-  letter-spacing: -0.01em;
-  text-decoration: none;
+/* logo (mesmo lockup do vídeo, fundo removido) */
+.brand {
   display: inline-flex;
-  align-items: baseline;
-  gap: 3px;
+  align-items: center;
+  text-decoration: none;
 }
-.wordmark b {
-  color: var(--steel);
-  font-weight: 500;
+.brand img {
+  display: block;
+  height: 56px;
+  width: auto;
 }
-.wordmark i {
-  color: var(--gold);
-  font-style: normal;
-}
-.wordmark span {
-  font-family: var(--mono);
-  font-size: 0.6rem;
-  letter-spacing: 0.24em;
-  text-transform: uppercase;
-  color: var(--ink-soft);
-  margin-left: 8px;
+.foot .brand img {
+  height: 92px;
 }
 
 /* ---------- hero ---------- */
