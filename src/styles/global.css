@@ -304,9 +304,104 @@ a:focus-visible {
 .nav__links a.btn:hover {
   color: #0c0b0a;
 }
+/* ---------- menu mobile (3 barrinhas) ---------- */
+.nav__toggle,
+.nav__panel {
+  display: none;
+}
 @media (max-width: 880px) {
-  .nav__links a:not(.btn) {
+  .nav__links {
     display: none;
+  }
+  .nav__toggle {
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 6px;
+    width: 46px;
+    height: 46px;
+    padding: 0 11px;
+    background: transparent;
+    border: 1px solid rgba(236, 231, 219, 0.22);
+    cursor: pointer;
+  }
+  .nav__toggle span {
+    display: block;
+    height: 1.5px;
+    background: var(--ink);
+    transition: transform 0.3s ease, opacity 0.2s ease;
+  }
+  .nav__toggle:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 3px;
+  }
+  .nav.is-open .nav__toggle span:nth-child(1) {
+    transform: translateY(7.5px) rotate(45deg);
+  }
+  .nav.is-open .nav__toggle span:nth-child(2) {
+    opacity: 0;
+  }
+  .nav.is-open .nav__toggle span:nth-child(3) {
+    transform: translateY(-7.5px) rotate(-45deg);
+  }
+
+  .nav__panel {
+    display: block;
+    position: fixed;
+    inset: 72px 0 0 0;
+    z-index: 39;
+    background: #0c0b0a;
+    padding-top: 12px;
+    overflow-y: auto;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+  }
+  .nav.is-open .nav__panel {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+  }
+  /* com o menu aberto, a barra fica sólida mesmo sobre o hero */
+  .nav.is-open {
+    background: #0c0b0a;
+    border-bottom-color: rgba(236, 231, 219, 0.08);
+  }
+  .nav__panel ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .nav__panel li a {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    padding: 20px 0;
+    border-bottom: 1px solid rgba(236, 231, 219, 0.1);
+    font-family: var(--serif);
+    font-size: 1.9rem;
+    line-height: 1.1;
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .nav__panel li a small {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    color: var(--gold);
+  }
+  .nav__panel li a:active,
+  .nav__panel li a:hover {
+    color: var(--gold);
+  }
+  .nav__panel-cta {
+    display: flex;
+    justify-content: center;
+    margin: 32px 0 40px;
+  }
+  body.menu-lock {
+    overflow: hidden;
   }
 }
 

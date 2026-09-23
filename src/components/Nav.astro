@@ -1,22 +1,83 @@
 ---
 import Brand from "./Brand.astro";
 import { whatsappUrl } from "../data/site";
+
+const links = [
+  { href: "#estudio", label: "Estúdio" },
+  { href: "#estrutura", label: "Estrutura" },
+  { href: "#como", label: "Como funciona" },
+  { href: "#planos", label: "Planos" },
+];
+const agendarUrl = whatsappUrl("Olá! Quero agendar uma sessão no M7 Studio.");
 ---
 
 <header class="nav">
   <div class="shell nav__row">
     <Brand />
-    <nav class="nav__links">
-      <a href="#estudio">Estúdio</a>
-      <a href="#estrutura">Estrutura</a>
-      <a href="#como">Como funciona</a>
-      <a href="#planos">Planos</a>
-      <a
-        class="btn"
-        href={whatsappUrl("Olá! Quero agendar uma sessão no M7 Studio.")}
-        target="_blank"
-        rel="noopener">Agendar</a
-      >
+    <nav class="nav__links" aria-label="Principal">
+      {links.map((l) => <a href={l.href}>{l.label}</a>)}
+      <a class="btn" href={agendarUrl} target="_blank" rel="noopener">Agendar</a>
+    </nav>
+    <button
+      class="nav__toggle"
+      type="button"
+      aria-expanded="false"
+      aria-controls="menu-mobile"
+      aria-label="Abrir menu"
+    >
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav__panel" id="menu-mobile">
+    <nav class="shell" aria-label="Menu">
+      <ul>
+        {
+          links.map((l, i) => (
+            <li>
+              <a href={l.href}>
+                <small>{String(i + 1).padStart(2, "0")}</small>
+                {l.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+      <a class="btn btn--gold nav__panel-cta" href={agendarUrl} target="_blank" rel="noopener">
+        Agendar no WhatsApp
+      </a>
     </nav>
   </div>
 </header>
+
+<script>
+  const nav = document.querySelector<HTMLElement>(".nav");
+  const toggle = nav?.querySelector<HTMLButtonElement>(".nav__toggle");
+  const panel = nav?.querySelector<HTMLElement>(".nav__panel");
+
+  if (nav && toggle && panel) {
+    const setOpen = (open: boolean) => {
+      nav.classList.toggle("is-open", open);
+      toggle.setAttribute("aria-expanded", String(open));
+      toggle.setAttribute("aria-label", open ? "Fechar menu" : "Abrir menu");
+      document.body.classList.toggle("menu-lock", open);
+    };
+
+    toggle.addEventListener("click", () =>
+      setOpen(!nav.classList.contains("is-open")),
+    );
+    // fecha ao escolher um item ou apertar Esc
+    panel.querySelectorAll("a").forEach((a) =>
+      a.addEventListener("click", () => setOpen(false)),
+    );
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && nav.classList.contains("is-open")) {
+        setOpen(false);
+        toggle.focus();
+      }
+    });
+    // se a tela crescer para desktop com o menu aberto, fecha
+    window.matchMedia("(min-width: 881px)").addEventListener("change", (e) => {
+      if (e.matches) setOpen(false);
+    });
+  }
+</script>
