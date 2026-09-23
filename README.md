@@ -47,10 +47,7 @@ public/
 Quase tudo vive em [`src/data/site.ts`](src/data/site.ts): telefone, e-mail,
 Instagram, endereço, os 3 planos e a FAQ. Trocar lá reflete em toda a página.
 
-### Ainda com placeholder
-
-- Preços dos planos (`R$ 000`) em `src/data/site.ts`
-- Domínio: https://m7estudio.com (DNS na Hostinger, A @ → 76.76.21.21)
+Planos mostram "Sob consulta" e direcionam para o WhatsApp.
 
 Quando tiver e-mail e Instagram, adicionar de volta em `src/data/site.ts`,
 `src/components/Footer.astro` e no JSON-LD de `src/layouts/Base.astro`.
@@ -59,3 +56,7 @@ Quando tiver e-mail e Instagram, adicionar de volta em `src/data/site.ts`,
 
 Vercel detecta Astro automaticamente (build `astro build`, saída `dist/`).
 Push na branch `main` publica.
+
+Domínio: **https://m7estudio.com**. DNS na Hostinger: `A @ → 76.76.21.21` e
+`CNAME www → cname.vercel-dns.com`. `www` redireciona (308) para o domínio
+principal; HTTPS emitido pela Vercel.
