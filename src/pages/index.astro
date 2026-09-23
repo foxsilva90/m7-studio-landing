@@ -26,31 +26,15 @@ import Footer from "../components/Footer.astro";
 </Base>
 
 <script>
+  import { initMotion } from "../scripts/motion";
+
   const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  document.documentElement.classList.add("js");
+  initMotion(reduce);
 
-  // reveal ao rolar
-  const revEls = document.querySelectorAll<HTMLElement>(
-    ".section__grid > *, .hero__inner > *",
-  );
-  const revealAll = () => revEls.forEach((el) => el.classList.add("in"));
-  revEls.forEach((el) => el.classList.add("reveal"));
-
-  if ("IntersectionObserver" in window && !reduce) {
-    const io = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((e) => {
-          if (e.isIntersecting) {
-            e.target.classList.add("in");
-            io.unobserve(e.target);
-          }
-        });
-      },
-      { threshold: 0.1, rootMargin: "0px 0px -6% 0px" },
-    );
-    revEls.forEach((el) => io.observe(el));
-    setTimeout(revealAll, 2500);
-  } else {
-    revealAll();
+  // movimento reduzido: vídeo do hero fica parado no pôster
+  const video = document.querySelector<HTMLVideoElement>(".hero__video");
+  if (video && reduce) {
+    video.removeAttribute("autoplay");
+    video.pause();
   }
 </script>

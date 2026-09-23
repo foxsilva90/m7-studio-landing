@@ -3,17 +3,18 @@ import { whatsappUrl } from "../data/site";
 ---
 
 <section class="hero" id="top">
-  <video
-    class="hero__bg"
-    src="/logo-m7.mp4"
-    autoplay
-    muted
-    loop
-    playsinline
-    preload="auto"
-    poster="/og.jpg"
-    aria-hidden="true"></video>
-  <div class="hero__scrim"></div>
+  <div class="hero__stage" aria-hidden="true">
+    <video
+      class="hero__video"
+      src="/logo-m7.mp4"
+      poster="/og.jpg"
+      autoplay
+      muted
+      loop
+      playsinline
+      preload="auto"></video>
+    <div class="hero__vignette"></div>
+  </div>
   <div class="shell hero__inner">
     <p class="hero__kicker">Estúdio de podcast · Rio de Janeiro</p>
     <h1 class="hero__title">
@@ -26,7 +27,7 @@ import { whatsappUrl } from "../data/site";
     </p>
     <div class="hero__actions">
       <a
-        class="btn"
+        class="btn btn--gold"
         href={whatsappUrl("Olá! Quero agendar uma sessão no M7 Studio.")}
         target="_blank"
         rel="noopener">Agendar no WhatsApp</a
@@ -39,4 +40,7 @@ import { whatsappUrl } from "../data/site";
       <span>Arquivos no mesmo dia</span>
     </div>
   </div>
+  <a class="hero__cue" href="#estudio" aria-label="Rolar para o conteúdo">
+    <span></span>
+  </a>
 </section>
