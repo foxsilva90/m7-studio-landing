@@ -306,12 +306,27 @@ a:focus-visible {
 }
 /* ---------- menu mobile (3 barrinhas) ---------- */
 .nav__toggle,
-.nav__panel {
+.nav__panel,
+.nav__cta {
   display: none;
 }
 @media (max-width: 880px) {
   .nav__links {
     display: none;
+  }
+  .nav__row {
+    position: relative;
+  }
+  /* "Agendar" exatamente no meio da barra, independente do logo/ícone */
+  .nav__cta {
+    display: inline-flex;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    padding: 11px 18px;
+    font-size: 0.7rem;
+    white-space: nowrap;
   }
   .nav__toggle {
     display: inline-flex;
